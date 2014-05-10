@@ -1,10 +1,6 @@
 HappyR ExcerptBundle
 =====================
 
-This bundle provides integration of the [URLify](https://github.com/jbroadway/urlify) library into Symfony2.
-A excerpt service and twig filter is provided. This bundle is a modified version of the
-[ZenstruckExcerptBundle](https://github.com/kbond/ZenstruckExcerptBundle). The ZenstruckExcerptBundle uses the
-[Excerpt](https://github.com/cocur/excerpt) library.
 
 ## Installation
 
@@ -28,19 +24,11 @@ A excerpt service and twig filter is provided. This bundle is a modified version
     }
     ```
 
-## Using the service
-
-```php
-
-$slugifier = $this->container->get('happyr.excerpt.slugifier');
-$text = $slugifier->excerpt('Hello World!');
-echo $text; //prints "hello-world"
-```
 
 ## Using the Twig filter
 
 ```html
-{{ 'Hello World!'|excerpt }} {# hello-world #}
+{{ '<p>Hello World Foobar!</p>'|excerpt(17) }} {# <p>Hello World...</p> #}
 
 ```
 
@@ -48,5 +36,6 @@ echo $text; //prints "hello-world"
 
 ```yaml
 happy_r_excerpt:
-    twig: false #set to true to enable twig filter
+    tail: '...'
+    length: 300
 ```
