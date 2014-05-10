@@ -2,6 +2,14 @@
 
 namespace HappyR\ExcerptBundle\Service;
 
+// create a shape representing a heading. This
+type Heading = shape(
+  'nr' => int,
+  'full' => string,
+  'content' => string,
+  'attributes' => string,
+);
+
 /**
  * Class HackExcerpt
  *
@@ -10,12 +18,6 @@ namespace HappyR\ExcerptBundle\Service;
  */
 class HackExcerpt implements ExcerptInterface
 {
-    /*
-     * We can not implement ExcerptInterface because ExcerptInterface::getExcerpt may return anything.
-     * HackExcerpt::getExcerpt must return a string
-     *
-     */
-
     /**
      * This is a new way of declaring private variables and a constructor at the same time
      */
@@ -39,9 +41,7 @@ class HackExcerpt implements ExcerptInterface
      */
     public function getExcerpt(mixed $text, mixed $limit=null, mixed $tail=null): string
     {
-        //add default values if not set
-        $limit = $limit?:$this->limit;
-        $tail = $tail?:$this->tail;
+        $this->getDefaults($limit, $tail);
 
         //make sure we don't exceed the limit
         $text = substr($text, 0, $limit);
@@ -53,6 +53,20 @@ class HackExcerpt implements ExcerptInterface
         $text=$this->convertHeadings($text);
 
         return $text;
+    }
+
+    /**
+     * Get the default values if not set
+     *
+     * @param int $limit passed by refrence (&) and null vallues are allowed (?)
+     * @param string $$tail passed by refrence (&) and null vallues are allowed (?)
+     *
+     * @return void
+     */
+    private function getDefaults(?int &$limit, ?string &$tail): void
+    {
+        $limit = $limit?:$this->limit;
+        $tail = $tail?:$this->tail;
     }
 
     /**
@@ -69,12 +83,11 @@ class HackExcerpt implements ExcerptInterface
         //die("<pre>".print_r($headings,true));
 
         foreach ($headings as $h) {
-            if ($h->get("nr")<3) {
-                $h->set("nr", 3);
-            }
+            //make sure we dont use h1 and h2
+            $h['nr']=$h['nr']<3?3:$h['nr'];
 
-            //you may access a Map in two different ways
-            $replacement=sprintf('<h%d class="excerpt-heading" %s>%s</h%d>', $h['nr'], $h->get('attributes'), $h['content'], $h['nr']);
+            //We know $h is a Heading (shape) so we can access these key without checking if the exists.
+            $replacement=sprintf('<h%d class="excerpt-heading" %s>%s</h%d>', $h['nr'], $h['attributes'], $h['content'], $h['nr']);
             $text=str_replace($h['full'], $replacement, $text);
         }
 
@@ -87,8 +100,9 @@ class HackExcerpt implements ExcerptInterface
      *
      * @param string $text
      *
+     * @return Vector<Heading>
      */
-    private function findHeadings(string $text): Vector<Map<string, string>>
+    private function findHeadings(string $text): Vector<Heading>
     {
         //create an empty vector
         $headings = Vector {};
@@ -99,8 +113,7 @@ class HackExcerpt implements ExcerptInterface
 
         //Create a map for each heading and put it to a vector
         foreach ($matches[0] as $i => $full) {
-            $h = Map { "full"=>$full, "attributes"=>$matches[2][$i], "content"=>$matches[3][$i], "nr"=>$matches[1][$i]};
-            $headings->add($h);
+            $headings->add( shape("full"=>$full, "attributes"=>$matches[2][$i], "content"=>$matches[3][$i], "nr"=>$matches[1][$i]));
         }
 
         return $headings;

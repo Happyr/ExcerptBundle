@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="happyrecruiting" default="test">
+<project name="happr-bundle" default="test">
     <!-- Use this when you want to test the current code -->
     <target name="test" depends="prepare,composer,phpunit"/>
 

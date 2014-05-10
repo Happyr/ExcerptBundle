@@ -20,7 +20,7 @@ class ExcerptExtension extends \Twig_Extension
     /**
      * @param ExcerptInterface $excerptService
      */
-    public function __construct($excerptService)
+    public function __construct(ExcerptInterface $excerptService)
     {
         $this->excerptService = $excerptService;
     }
