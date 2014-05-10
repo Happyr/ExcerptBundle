@@ -13,7 +13,10 @@ namespace HappyR\ExcerptBundle\Service;
 class HackExcerpt implements ExcerptInterface
 {
 
-    private $limit;
+    public function __construct($limit=300, $tail='…')
+    {
+
+    }
 
     public function getExcerpt($string, $limit = null, $tail = null)
     {

@@ -7,8 +7,10 @@ parameters:
 services:
   happyr.excerpt.service:
     class: %happyr.excerpt.php.class%
+    arguments: [~, ~]
 
   happyr.excerpt.twig.excerpt_extension:
     class: %happyr.excerpt.twig_exension.class%
+    arguments: [@happyr.excerpt.service]
     tags:
       - { name: twig.extension }

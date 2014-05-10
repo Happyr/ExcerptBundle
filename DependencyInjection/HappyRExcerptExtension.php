@@ -25,5 +25,13 @@ class HappyRExcerptExtension extends Extension
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
 
+        $excerptServiceDef = $container->getDefinition('happyr.excerpt.service');
+
+        if (defined('HHVM_VERSION')) {
+            $excerptServiceDef->setClass($container->getParameter('happyr.excerpt.hack.class'));
+        }
+
+        $excerptServiceDef->replaceArgument(0, $config['length']);
+        $excerptServiceDef->replaceArgument(1, $config['tail']);
     }
 }
