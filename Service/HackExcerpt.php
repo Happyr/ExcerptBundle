@@ -2,7 +2,11 @@
 
 namespace HappyR\ExcerptBundle\Service;
 
-// create a shape representing a heading. This
+/*
+ * Create a shape representing a heading. This is basically
+ * just an array but by defining a shape we make sure
+ * each value exist.
+ */
 type Heading = shape(
   'nr' => int,
   'full' => string,
