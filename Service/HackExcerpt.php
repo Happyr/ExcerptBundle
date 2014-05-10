@@ -8,8 +8,13 @@ namespace HappyR\ExcerptBundle\Service;
  * @author Tobias Nyholm
  *
  */
-class HackExcerpt
+class HackExcerpt implements ExcerptInterface
 {
+    /*
+     * We can not implement ExcerptInterface because ExcerptInterface::getExcerpt may return anything.
+     * HackExcerpt::getExcerpt must return a string
+     *
+     */
 
     /**
      * This is a new way of declaring private variables and a constructor at the same time
@@ -20,7 +25,19 @@ class HackExcerpt
     ) {
     }
 
-    public function getExcerpt(string $text, int $limit=null, string $tail=null): string
+    /**
+     * Get an excerpt for $text.
+     *
+     * Since we are implementing ExcerptInterface we can not use declare this function like the follwing row. We have to use "mixed"...
+     *    public function getExcerpt(string $text, int $limit=null, string $tail=null): string
+     *
+     *
+     * @param mixed $text
+     * @param mixed $limit
+     * @param mixed $tail
+     *
+     */
+    public function getExcerpt(mixed $text, mixed $limit=null, mixed $tail=null): string
     {
         //add default values if not set
         $limit = $limit?:$this->limit;
@@ -37,8 +54,6 @@ class HackExcerpt
 
         return $text;
     }
-
-
 
     /**
      * Convert all <h*> to <h3 class="something">
@@ -91,6 +106,17 @@ class HackExcerpt
         return $headings;
     }
 
+
+
+    /************************************************
+     ************************************************
+     *
+     * The following function is not interesting
+     * to study if you want to learn Hack.
+     *
+     *************************************************
+     ************************************************/
+
     /**
      * Strip all HTML but i, p, b, strong, em and headings.
      *
@@ -108,15 +134,15 @@ class HackExcerpt
         return strip_tags($text, '<i><p><b><strong><em><h1><h2><h3><h4><h5><h6>');
     }
 
-/**
- * Close all open HTML tags
- *
- * @Author alexn @ stackoverflow.com (http://stackoverflow.com/questions/3810230/php-how-to-close-open-html-tag-in-a-string)
- *
- * @param string $text
- *
- * @return string
- */
+    /**
+     * Close all open HTML tags
+     *
+     * @Author alexn @ stackoverflow.com (http://stackoverflow.com/questions/3810230/php-how-to-close-open-html-tag-in-a-string)
+     *
+     * @param string $text
+     *
+     * @return string
+     */
     private function closeHtmlTags(string $text): string
     {
         /* Tidy is not supported in HHVM jet
