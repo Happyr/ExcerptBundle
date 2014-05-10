@@ -47,7 +47,7 @@ class HackExcerpt implements ExcerptInterface
     {
         $this->getDefaults($limit, $tail);
 
-        if (strlen($text)>$limit) {
+        /*if (strlen($text)>$limit) {
             //make sure we don't exceed the limit
             $tooShortText = substr($text, 0, $limit);
             $lengthNoTags = strlen(strip_tags($tooShortText));
@@ -55,7 +55,7 @@ class HackExcerpt implements ExcerptInterface
 
             //don't cut a word
             $text = substr($text, 0, strrpos($text, ' ')).$tail;
-        }
+        }*/
 
         $text=$this->stripHtml($text);
         $text=$this->closeHtmlTags($text);
@@ -89,14 +89,27 @@ class HackExcerpt implements ExcerptInterface
     {
         $headings=$this->findHeadings($text);
 
-        //die("<pre>".print_r($headings,true));
+        //add a extra class on the heading
+        $headings=$headings->map(function(&$h) {
+                if(empty($h["attributes"])) {
+                    $h['attributes']='class="excerpt-heading"';
+                } else {
+                    $h['attributes']=preg_replace_callback(
+                        '|class=[\'"](.*?)[\'"]|sim',
+                        $x ==> sprintf('class="excerpt-heading %s"', $x[1]),
+                        $h['attributes']
+                    );
+                }
+
+                return $h;
+            });
 
         foreach ($headings as $h) {
             //make sure we dont use h1 and h2
             $h['nr']=$h['nr']<3?3:$h['nr'];
 
             //We know $h is a Heading (shape) so we can access these key without checking if the exists.
-            $replacement=sprintf('<h%d class="excerpt-heading" %s>%s</h%d>', $h['nr'], $h['attributes'], $h['content'], $h['nr']);
+            $replacement=sprintf('<h%d %s>%s</h%d>', $h['nr'], $h['attributes'], $h['content'], $h['nr']);
             $text=str_replace($h['full'], $replacement, $text);
         }
 
