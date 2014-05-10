@@ -47,13 +47,18 @@ class HackExcerpt implements ExcerptInterface
     {
         $this->getDefaults($limit, $tail);
 
-        //make sure we don't exceed the limit
-        $text = substr($text, 0, $limit);
-        //don't cut a word
-        $text = substr($text, 0, strrpos($text, ' '));
+        if (strlen($text)>$limit) {
+            //make sure we don't exceed the limit
+            $tooShortText = substr($text, 0, $limit);
+            $lengthNoTags = strlen(strip_tags($tooShortText));
+            $text=substr($text, 0, $limit + ($limit-$lengthNoTags));
+
+            //don't cut a word
+            $text = substr($text, 0, strrpos($text, ' ')).$tail;
+        }
 
         $text=$this->stripHtml($text);
-        $text=$this->closeHtmlTags($text.$tail);
+        $text=$this->closeHtmlTags($text);
         $text=$this->convertHeadings($text);
 
         return $text;
