@@ -1,6 +1,10 @@
-HappyR ExcerptBundle
+HappyR Excerpt Bundle
 =====================
 
+The purpose of this is to try Hack programming language. This is not the fastest or the most elegant way
+of programming. But it is a good bundle to show in a demo. 
+
+The Excerpt Bundle takes an excerpt from a HTML string. We make sure to return valid HTML and we do not break words. 
 
 ## Installation
 
