@@ -47,7 +47,7 @@ class HackExcerpt implements ExcerptInterface
     {
         $this->getDefaults($limit, $tail);
 
-        /*if (strlen($text)>$limit) {
+        if (strlen($text)>$limit) {
             //make sure we don't exceed the limit
             $tooShortText = substr($text, 0, $limit);
             $lengthNoTags = strlen(strip_tags($tooShortText));
@@ -55,7 +55,7 @@ class HackExcerpt implements ExcerptInterface
 
             //don't cut a word
             $text = substr($text, 0, strrpos($text, ' ')).$tail;
-        }*/
+        }
 
         $text=$this->stripHtml($text);
         $text=$this->closeHtmlTags($text);
@@ -146,7 +146,7 @@ class HackExcerpt implements ExcerptInterface
     /************************************************
      ************************************************
      *
-     * The following function is not interesting
+     * The following functions is not interesting
      * to study if you want to learn Hack.
      *
      *************************************************
