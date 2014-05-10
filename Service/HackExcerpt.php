@@ -135,7 +135,7 @@ class HackExcerpt implements ExcerptInterface
      ************************************************/
 
     /**
-     * Strip all HTML but i, p, b, strong, em and headings.
+     * Strip all HTML but i, p, b, strong, em, a and headings.
      *
      * @param string $text
      *
@@ -148,7 +148,7 @@ class HackExcerpt implements ExcerptInterface
         $text = preg_replace('|<ul.*</ul>|sim', '', $text);
         $text = preg_replace('|<ol.*</ol>|sim', '', $text);
 
-        return strip_tags($text, '<i><p><b><strong><em><h1><h2><h3><h4><h5><h6>');
+        return strip_tags($text, '<i><p><b><strong><em><a><h1><h2><h3><h4><h5><h6>');
     }
 
     /**
