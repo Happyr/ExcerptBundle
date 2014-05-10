@@ -1,0 +1,14 @@
+parameters:
+  happyr.excerpt.php.class: HappyR\ExcerptBundle\Service\PhpExcerpt
+  happyr.excerpt.hack.class: HappyR\ExcerptBundle\Service\HackExcerpt
+
+  happyr.excerpt.twig_exension.class: HappyR\ExcerptBundle\Twig\ExcerptExtension
+
+services:
+  happyr.excerpt.service:
+    class: %happyr.excerpt.php.class%
+
+  happyr.excerpt.twig.excerpt_extension:
+    class: %happyr.excerpt.twig_exension.class%
+    tags:
+      - { name: twig.extension }

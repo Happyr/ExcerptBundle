@@ -1,0 +1,26 @@
+{
+    "name": "happyr/excerpt-bundle",
+    "type": "symfony-bundle",
+    "description": "A Symfony2 Bundle to make excerpts",
+    "keywords": ["Excerpt"],
+    "homepage": "http://developer.happyr.se/symfony2-bundles/excerpt-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Tobias Nyholm",
+            "email": "tobias@happyrecruiting.se"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.2",
+        "symfony/framework-bundle": "2.*"
+    },
+    "require-dev": {
+        "mockery/mockery": "*"
+    },
+    "autoload": {
+        "psr-0": { "HappyR\\ExcerptBundle": "" }
+    },
+    "target-dir": "HappyR/ExcerptBundle"
+    
+}
