@@ -32,7 +32,8 @@ The Excerpt Bundle takes an excerpt from a HTML string. We make sure to return v
 ## Using the Twig filter
 
 ```html
-{{ '<p>Hello World Foobar!</p>'|excerpt(17) }} {# <p>Hello World...</p> #}
+{{ '<p>Hello World Foobar!</p>'|excerpt(17) }} 
+{# <p>Hello World...</p> #}
 
 ```
 
