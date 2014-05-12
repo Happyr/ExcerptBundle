@@ -2,7 +2,7 @@ HappyR Excerpt Bundle
 =====================
 
 The purpose of this is to try Hack programming language. This is not the fastest or the most elegant way
-of programming. But it is a good bundle to show in a demo. 
+of programming. But it is a good bundle to show in a demo. I wrote a blog post about this bundle on [developer.happyr.com](http://developer.happyr.com/symfony-excerpt-bundle-using-hack).
 
 The Excerpt Bundle takes an excerpt from a HTML string. We make sure to return valid HTML and we do not break words. 
 
