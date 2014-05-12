@@ -2,8 +2,8 @@
     "name": "happyr/excerpt-bundle",
     "type": "symfony-bundle",
     "description": "A Symfony2 Bundle to make excerpts",
-    "keywords": ["Excerpt"],
-    "homepage": "http://developer.happyr.se/symfony2-bundles/excerpt-bundle",
+    "keywords": ["Excerpt", "Hack"],
+    "homepage": "http://developer.happyr.com/symfony2-bundles/excerpt-bundle",
     "license": "MIT",
     "authors": [
         {
