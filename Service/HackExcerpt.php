@@ -67,8 +67,10 @@ class HackExcerpt implements ExcerptInterface
     /**
      * Get the default values if not set
      *
-     * @param int $limit passed by refrence (&) and null vallues are allowed (?)
-     * @param string $$tail passed by refrence (&) and null vallues are allowed (?)
+     * The type declaration is interesting here. The parameters are passed by refrence (&) and null vallues are allowed (?)
+     * 
+     * @param int &$limit 
+     * @param string &$tail 
      *
      * @return void
      */
@@ -146,7 +148,7 @@ class HackExcerpt implements ExcerptInterface
     /************************************************
      ************************************************
      *
-     * The following functions is not interesting
+     * The following functions are not interesting
      * to study if you want to learn Hack.
      *
      *************************************************
