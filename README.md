@@ -37,7 +37,7 @@ The Excerpt Bundle takes an excerpt from a HTML string. We make sure to return v
 
 ```
 
-## Full Default Configuration
+## Default Configuration
 
 ```yaml
 happy_r_excerpt:
