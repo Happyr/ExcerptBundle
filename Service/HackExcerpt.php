@@ -143,8 +143,6 @@ class HackExcerpt implements ExcerptInterface
         return $headings;
     }
 
-
-
     /************************************************
      ************************************************
      *

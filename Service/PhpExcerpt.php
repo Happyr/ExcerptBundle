@@ -3,23 +3,18 @@
 namespace HappyR\ExcerptBundle\Service;
 
 /**
- * Class PhpExcerpt
- *
  * @author Rickard Andersson
  * @author Tobias Nyholm
- *
  */
 class PhpExcerpt implements ExcerptInterface
 {
     /**
      * @var int limit
-     *
      */
     private $limit;
 
     /**
      * @var string tail
-     *
      */
     private $tail;
 
@@ -27,7 +22,7 @@ class PhpExcerpt implements ExcerptInterface
      * @param integer $limit
      * @param string $tail
      */
-    public function __construct($limit=300, $tail='…')
+    public function __construct($limit = 300, $tail = '…')
     {
         $this->limit = $limit;
 
@@ -45,10 +40,9 @@ class PhpExcerpt implements ExcerptInterface
      */
     public function getExcerpt($string, $limit=null, $tail=null)
     {
-        //add default values if not set
+        // add default values if not set
         $limit = $limit?:$this->limit;
         $tail = $tail?:$this->tail;
-
 
         $string = strip_tags($string);
         $length = strlen($string);
@@ -78,6 +72,6 @@ class PhpExcerpt implements ExcerptInterface
             }
         }
 
-        return substr($string, 0, $cut ? $cut : $limit) . $tail;
+        return substr($string, 0, $cut ? $cut : $limit).$tail;
     }
 } 

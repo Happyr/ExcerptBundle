@@ -9,18 +9,20 @@
         {
             "name": "Tobias Nyholm",
             "email": "tobias@happyrecruiting.se"
+        },
+        {
+            "name": "Luis Cordova",
+            "email": "cordoval@gmail.com"
         }
     ],
     "require": {
-        "php": ">=5.3.2",
-        "symfony/framework-bundle": "2.*"
+        "php": ">=5.4",
+        "symfony/framework-bundle": "~2"
     },
     "require-dev": {
         "mockery/mockery": "*"
     },
     "autoload": {
-        "psr-0": { "HappyR\\ExcerptBundle": "" }
-    },
-    "target-dir": "HappyR/ExcerptBundle"
-    
+        "psr-4": { "HappyR\\ExcerptBundle\\": "" }
+    }
 }
