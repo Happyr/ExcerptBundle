@@ -17,8 +17,8 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
-            ->scalarNode('tail')->defaultValue('…')->end()
-            ->integerNode('length')->defaultValue(300)->end()
+                ->scalarNode('tail')->defaultValue('…')->end()
+                ->integerNode('length')->defaultValue(300)->end()
             ->end()
         ;
 
