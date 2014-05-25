@@ -3,11 +3,7 @@
 namespace HappyR\ExcerptBundle\Tests\Service;
 
 /**
- * Class PhpExcerptTest
- *
  * @author Rickard Andersson
- *
- *
  */
 class PhpExcerptTest extends \PHPUnit_Framework_TestCase
 {

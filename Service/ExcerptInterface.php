@@ -3,10 +3,7 @@
 namespace HappyR\ExcerptBundle\Service;
 
 /**
- * Class ExcerptInterface
- *
  * @author Tobias Nyholm
- *
  */
 interface ExcerptInterface
 {

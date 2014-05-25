@@ -5,8 +5,6 @@ namespace HappyR\ExcerptBundle\Twig;
 use HappyR\ExcerptBundle\Service\ExcerptInterface;
 
 /**
- * Class ExcerptExtension
- *
  * A twig extension to create an excerpt from a piece of text
  */
 class ExcerptExtension extends \Twig_Extension

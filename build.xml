@@ -27,5 +27,4 @@
     <target name="clean" description="Cleanup remains from old build">
         <delete dir="${basedir}/build/*"/>
     </target>
-
 </project>
