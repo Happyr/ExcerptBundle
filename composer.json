@@ -23,6 +23,7 @@
         "mockery/mockery": "*"
     },
     "autoload": {
-        "psr-4": { "HappyR\\ExcerptBundle\\": "" }
-    }
+        "psr-0": { "HappyR\\ExcerptBundle\\": "" }
+    },
+    "target-dir": "HappyR/ExcerptBundle"
 }
