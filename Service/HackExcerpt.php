@@ -119,8 +119,8 @@ class HackExcerpt implements ExcerptInterface
     }
 
     /**
-     * Return all headings as a Map with keys "full", "attributes", "nr" and "content".
-     * The headings Map is in a Vector
+     * Return all headings as a Heading shape
+     * The Headings is in a Vector
      *
      * @param string $text
      *
